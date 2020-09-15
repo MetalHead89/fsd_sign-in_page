@@ -1,0 +1,165 @@
+<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Registration Page</title><link href="main.css" rel="stylesheet"></head><body><div class="header-container"><div class="header_contaner"><div class="header"><div class="header__content"><img class="header__logo" src="assets/images/logo.svg" alt="logo"> <input class="header__menu-check" type="checkbox" name="header" id="header"><ul class="navbar navbar_horizontal"><li class="navbar__item navbar__item_horizontal">О нас</li><li class="navbar__item navbar__item_horizontal"><div class="navbar__dropdown-title"><span>Услуги </span><i class="material-icons">expand_more</i></div><ul class="navbar__hidden-list navbar__hidden-list_horizontal"><li class="navbar__hidden-list-item navbar__hidden-list-item_horizontal">Обслуживание номеров</li><li class="navbar__hidden-list-item navbar__hidden-list-item_horizontal">Парковка</li><li class="navbar__hidden-list-item navbar__hidden-list-item_horizontal">Персональный сейф</li><li class="navbar__hidden-list-item navbar__hidden-list-item_horizontal">Интернет</li><li class="navbar__hidden-list-item navbar__hidden-list-item_horizontal">Кабельное телевидние</li><li class="navbar__hidden-list-item navbar__hidden-list-item_horizontal">Питание</li></ul></li><li class="navbar__item navbar__item_horizontal">Вакансии</li><li class="navbar__item navbar__item_horizontal">Новости</li><li class="navbar__item navbar__item_horizontal"><div class="navbar__dropdown-title"><span>Соглашения</span><i class="material-icons">expand_more</i></div><ul class="navbar__hidden-list navbar__hidden-list_horizontal"><li class="navbar__hidden-list-item navbar__hidden-list-item_horizontal">Правила проживание</li><li class="navbar__hidden-list-item navbar__hidden-list-item_horizontal">Бонусная программа</li><li class="navbar__hidden-list-item navbar__hidden-list-item_horizontal">Политика конфиденциальности</li></ul></li><li class="navbar__item navbar__separator-item navbar__item navbar__item_horizontal"><div class="navbar__separator"></div></li><li class="navbar__account-name navbar__item navbar__item_horizontal">Виталий Бакалов</li><li class="navbar__button-entry-container navbar__item navbar__item_horizontal"><div class="button"><input class="button__button-shape button__border-button navbar__button-entry" type="button" value="Войти"></div></li><li class="navbar__button-registration-container navbar__item navbar__item_horizontal"><div class="button"><input class="button__button-shape button__regular-button navbar__button-registration" type="button" value="Зарегистрироваться"></div></li></ul><label class="header__burger" for="header"><div class="header__burger-image"></div></label></div></div><ul class="navbar navbar_vertical"><li class="navbar__item navbar__item_vertical">О нас</li><li class="navbar__item navbar__item_vertical"><div class="navbar__dropdown-title navbar__dropdown-title_vertical"><span>Услуги </span><i class="material-icons">expand_more</i></div><ul class="navbar__hidden-list navbar__hidden-list_vertical"><li class="navbar__hidden-list-item navbar__hidden-list-item_vertical">Обслуживание номеров</li><li class="navbar__hidden-list-item navbar__hidden-list-item_vertical">Парковка</li><li class="navbar__hidden-list-item navbar__hidden-list-item_vertical">Персональный сейф</li><li class="navbar__hidden-list-item navbar__hidden-list-item_vertical">Интернет</li><li class="navbar__hidden-list-item navbar__hidden-list-item_vertical">Кабельное телевидние</li><li class="navbar__hidden-list-item navbar__hidden-list-item_vertical">Питание</li></ul></li><li class="navbar__item navbar__item_vertical">Вакансии</li><li class="navbar__item navbar__item_vertical">Новости</li><li class="navbar__item navbar__item_vertical"><div class="navbar__dropdown-title navbar__dropdown-title_vertical"><span>Соглашения</span><i class="material-icons">expand_more</i></div><ul class="navbar__hidden-list navbar__hidden-list_vertical"><li class="navbar__hidden-list-item navbar__hidden-list-item_vertical">Правила проживание</li><li class="navbar__hidden-list-item navbar__hidden-list-item_vertical">Бонусная программа</li><li class="navbar__hidden-list-item navbar__hidden-list-item_vertical">Политика конфиденциальности</li></ul></li><li class="navbar__item navbar__separator-item navbar__item navbar__item_vertical"><div class="navbar__separator navbar__separator_vertical"></div></li><li class="navbar__account-name navbar__item navbar__item_vertical">Виталий Бакалов</li><li class="navbar__button-entry-container navbar__item navbar__item_vertical"><div class="button"><input class="button__button-shape button__border-button navbar__button-entry" type="button" value="Войти"></div></li><li class="navbar__button-registration-container navbar__item navbar__item_vertical"><div class="button"><input class="button__button-shape button__regular-button navbar__button-registration" type="button" value="Зарегистрироваться"></div></li></ul></div></div><div class="registration-signin-page__body"><div class="registration-signin-page__background registration-signin-page__background1"></div><div class="registration-signin-page__background registration-signin-page__background2"></div><div class="registration-signin-page__body-content-container"><div class="registration-signin-page__registration-card-container"><div class="entry-card"><h1 class="entry-card__title">Войти</h1><div class="entry-card__login-details"><div class="text-field"><input class="text-field__field undefined" placeholder="Email"></div><div class="text-field"><input class="text-field__field undefined" placeholder="Пароль"></div></div><div class="button button_position-relative"><input class="button__button-shape button__arrow-button undefined" type="button" value="Войти"><span class="material-icons button__arrow">arrow_forward</span></div><div class="entry-card__create-account"><div class="entry-card__create-account-label">Нет аккаунта на Toxin?</div><div class="entry-card__create-account-button"><div class="button"><input class="button__button-shape button__border-button undefined" type="button" value="создать"></div></div></div></div><script>let maskedTextField = document.querySelector('.text-field__field-masked');
+
+if (maskedTextField) {
+    maskedTextField.oninput = onInputMaskedTextField;
+    maskedTextField.onpaste = onPastetMaskedTextField;
+    maskedTextField.onkeydown = onKeydowMaskedTextField;
+}
+
+function getTextWithoutDots(text) {
+    /**
+     * Удаляет точки из полученной строки
+     * 
+     * @param {string} text - строка с точками
+     * @returns {string} Строка без точек
+     */
+
+    return text.split('.').join('');
+}
+
+function onPastetMaskedTextField() {
+    /**
+     * Проверяет, что вставляемый текст содержит в себе только цифры и точки.
+     * В случае неудачной проверки отменяет вставку
+     */
+
+    clipboardData = event.clipboardData || window.clipboardData;
+    pastedData = clipboardData.getData('Text');
+
+    if (isNaN(getTextWithoutDots(pastedData)))
+        event.preventDefault();
+}
+
+function onKeydowMaskedTextField() {
+    /**
+     * Сдвигает каретку во время удаления, если она стоит до или перед точкой
+     */
+    
+    if (event.key == 'Backspace' && this.selectionStart == this.selectionEnd && 
+    this.value.substr(this.selectionStart - 1, 1) == '.') {
+        this.selectionStart--;
+        this.selectionEnd--;
+    }
+    if (event.key == 'Delete' && this.selectionStart == this.selectionEnd && 
+    this.value.substr(this.selectionStart, 1) == '.') {
+        this.selectionStart++;
+        this.selectionEnd++;
+    }
+}
+
+function onInputMaskedTextField() {
+    /**
+     * Ограничивает ввод символов, не являющихся буквами
+     * Расставляет разделители.
+     */
+    let caretPosition = this.selectionStart;
+    let text = this.value;
+    
+    if (isNaN(getTextWithoutDots(text))) {
+        startCaretPosition = caretPosition - event.data.length;
+        text = `${text.slice(0, startCaretPosition)}${text.slice(caretPosition)}`;
+        if (text.length > 1)
+            caretPosition -= 2;
+        else
+            caretPosition--;
+    }
+
+    if ((event.inputType == 'deleteContentBackward' || event.inputType == 'deleteContentForward') && text.length > 2) {
+        caretPosition--;
+    }
+
+    text = getTextWithoutDots(text);
+    
+    if (text.length >= 2 && text.length < 4) {
+        text = `${text.slice(0, 2)}.${text.slice(2)}`;
+        caretPosition ++;
+    }
+    else if (text.length >= 4) {
+        text = `${text.slice(0, 2)}.${text.slice(2, 4)}.${text.slice(4, 8)}`
+        caretPosition ++;
+    }
+        
+    this.value = text;
+    this.selectionStart = caretPosition;
+    this.selectionEnd = caretPosition;
+}</script></div></div></div><script>'use strict'
+
+const header = document.querySelector('.header-container');
+const pageBodyBackground = document.querySelector('.registration-signin-page__body');
+const body = document.querySelector('body');
+
+window.onload = function() {
+    const visiblePageHeight = document.documentElement.clientHeight;
+    if (document.querySelector('.entry-card') && visiblePageHeight >= 450 ||
+        document.querySelector('.registrationCard') && visiblePageHeight > 800) {
+            pageBodyBackground.style.height = `${document.documentElement.clientHeight - header.offsetHeight}px`;
+    } else if (document.querySelector('.entry-card') && visiblePageHeight < 450) {
+        pageBodyBackground.style.height = '450px';
+    }
+}</script><footer><div class="footer__info_container"><div class="footer__info"><ul class="footer__info-column footer__info-column_width260 footer__info-column_margin-left"><li class="footer__info-column-item"><img class="footer__logo" src="assets/images/logo.svg" alt="logo"></li><li class="footer__info-column-item"><span>Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»</span></li></ul><ul class="footer__info-column"><li class="footer__info-column-item footer__info-column-title">Навигация</li><li class="footer__info-column-item">О нас</li><li class="footer__info-column-item">Новости</li><li class="footer__info-column-item">Служба поддержки</li><li class="footer__info-column-item">Услуги</li></ul><ul class="footer__info-column"><li class="footer__info-column-item footer__info-column-title">О нас</li><li class="footer__info-column-item">О сервисе</li><li class="footer__info-column-item">Наша команда</li><li class="footer__info-column-item">Вакансии</li><li class="footer__info-column-item">Инвесторы</li></ul><ul class="footer__info-column"><li class="footer__info-column-item footer__info-column-title">Служба поддержки</li><li class="footer__info-column-item">Соглашения</li><li class="footer__info-column-item">Сообщества</li><li class="footer__info-column-item">Связь с нами</li></ul><ul class="footer__info-column footer__info-column_width260 footer__info-column_margin-right"><li class="footer__info-column-item footer__info-column-title">Подписка</li><li class="footer__info-column-item">Получайте специальные предложения и новости сервиса</li><li class="footer__info-column-item"><div class="text-field"><input class="text-field__field text-field__field-subscription" placeholder="Email"> <button class="text-field__subscription-btn"><span class="material-icons text-field__arrow-forward">arrow_forward</span></button></div></li></ul></div></div><div class="footer__copyright-container"><div class="footer__copyright"><img class="footer__logo footer__logo-in-copyright-zone" src="assets/images/logo.svg" alt="logo"><div class="footer__copyright-text">Copyright © 2018 Toxin отель. Все права зачищены.</div><div class="footer__socials-icons"><a class="footer__social-link" href="https://twitter.com/"><i class="fab fa-twitter"></i></a><a class="footer__social-link" href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a><a class="footer__social-link" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a></div></div></div></footer><script>'use strict'
+
+let entryCheck = false;
+const entryButtons = document.querySelectorAll('.navbar__button-entry-container');
+const registrationButtons = document.querySelectorAll('.navbar__button-registration-container');
+const accountNames = document.querySelectorAll('.navbar__account-name');
+const separators = document.querySelectorAll('.navbar__separator-item');
+const dropdownItems = document.querySelectorAll('.navbar__dropdown-title_vertical');
+
+for (let button of entryButtons) {
+    button.onclick = signIn;
+}
+for (let name of accountNames) {
+    name.onclick = signIn;
+}
+
+function signIn() {
+    if (entryCheck) {
+        for (let button of entryButtons) {
+            button.removeAttribute('style');
+        }
+        for (let button of registrationButtons) {
+            button.removeAttribute('style');
+        }
+        for (let name of accountNames) {
+            name.removeAttribute('style');
+        }
+        for (let separator of separators) {
+            separator.removeAttribute('style');
+        }
+        entryCheck = false;
+    } else {
+        for (let button of entryButtons) {
+            button.style.display = 'none';
+        }
+        for (let button of registrationButtons) {
+            button.style.display = 'none';
+        }
+        for (let name of accountNames) {
+            name.style.display = 'flex'
+            name.style.paddingRight = 0;
+        }
+        for (let separator of separators) {
+            separator.style.display = 'flex'
+        }
+        entryCheck = true;
+    }
+}
+
+for (let item of dropdownItems) {
+    item.onclick = function() {
+        item.nextElementSibling.classList.toggle('navbar__hidden-list_vertical-opened')
+    }
+}'use strict'
+
+const burger = document.querySelector('.header__burger');
+const hideMenu = document.querySelector('.navbar_vertical');
+const hideMenuItems = hideMenu.querySelectorAll('.navbar__item_vertical');
+
+burger.onclick = function() {
+    if (hideMenu) {
+        hideMenu.classList.toggle('navbar_vertical-opened');
+        for (let item of hideMenuItems) {
+            item.classList.toggle('navbar__item_vertical-opened');
+        }
+    }
+}</script><script src="main.eba72a9eda82ad14459a.js"></script></body></html>
